@@ -1,6 +1,5 @@
 #include "Interfaces.h"
 
-
 template<class T>
 bool Container<T>::is_empty() const { return !get_size(); }
 
@@ -16,6 +15,24 @@ string Container<T>::to_string() {
 	res += "]";
 	return res;
 }
+
+/*
+template<class T>
+void IndexedContainer<T>::selection_sort() {
+	ContainerIterator<T&> *to_ins_iter = this->create_iterator(), *to_min_iter;
+	for (int i = 0, min_index; i < get_size(); i++) {
+		min_index = i;
+		for (int j = i + 1; j < get_size(); j++)
+			if (get(min_index) > get(j))
+				min_index = j;
+		if (min_index != i) {
+			tmp = get(min_index);
+			set(min_index, get(i));
+			set(i, tmp);
+		}
+	}
+}
+*/
 
 template <class T>
 bool Container<T>::operator==(Container<T> const& other) const {
@@ -35,22 +52,6 @@ bool Container<T>::operator==(Container<T> const& other) const {
 
 template<class T>
 T IndexedContainer<T>::operator[](int index) { return this->get(index); }
-
-template<class T>
-void IndexedContainer<T>::selection_sort() {
-	T tmp;
-	for (int i = 0, min_index; i < get_size(); i++) {
-		min_index = i;
-		for (int j = i + 1; j < get_size(); j++)
-			if (get(min_index) > get(j))
-				min_index = j;
-		if (min_index != i) {
-			tmp = get(min_index);
-			set(min_index, get(i));
-			set(i, tmp);
-		}
-	}
-}
 
 template <class T>
 ostream& operator<<(ostream& os, Container<T>& container) {

@@ -17,3 +17,6 @@ template<class T, class StaticContainer>
 bool StaticContainerIterator<T, StaticContainer>::has_next() {
 	return count_of_iters < container_size - 1;
 }
+
+template<class T, class StaticContainer>
+void StaticContainerIterator<T, StaticContainer>::set_value(const T& value) { *it_ptr = value; }

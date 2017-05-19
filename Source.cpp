@@ -47,8 +47,10 @@ void main() {
 			while (p_p_cont_iter->has_next())
 					cout << p_p_cont_iter->next() << " ";
 			cout << p_p_cont_iter->next() << "\nѕри помощи метода to_string():\n" << *p_p_cont 
-				<< "\nЁлемент, который будет удален из контейнера, при вызове метода pop(): " << p_p_cont->peek() << "\n";
-			cout << "»спользу€ метод pop() дл€ данного контейнера, удалим оттуда все элементы, за исключением начального в статических контейнерах.\n";
+				<< "\nЁлемент, который будет удален из контейнера, при вызове метода pop(): " << p_p_cont->peek() 
+				<< "\nќтсортируем данный контейнер:\n";
+			p_p_cont->selection_sort();
+			cout << *p_p_cont << "\n»спользу€ метод pop() дл€ данного контейнера, удалим оттуда все элементы, за исключением начального в статических контейнерах.\n";
 			for (int j = 0; j < elems_num; j++)
 				cout << p_p_cont->pop() << " ";
 			cout << "\n\n";
@@ -71,16 +73,18 @@ void main() {
 				deque_cont->push_front(rand() % 101);
 			}
 			cout << *deque_cont << "\n–аспечатаем элементы контейнера, при помощи итератора:\n";
-			ContainerIterator<const int&> * p_p_cont_iter = deque_cont->create_iterator_const();
-			while (p_p_cont_iter->has_next())
-				cout << p_p_cont_iter->next() << " ";
-			cout << p_p_cont_iter->next() << "\nѕри помощи метода to_string():\n" << *deque_cont 
+			ContainerIterator<const int&> * deque_cont_iter = deque_cont->create_iterator_const();
+			while (deque_cont_iter->has_next())
+				cout << deque_cont_iter->next() << " ";
+			cout << deque_cont_iter->next() << "\nѕри помощи метода to_string():\n" << *deque_cont 
 				<< "\nЁлемент, который будет удален из контейнера, при вызове метода pop_front(): " << deque_cont->peek_front()
-				<< "\nЁлемент, который будет удален из контейнера, при вызове метода pop_back(): " << deque_cont->peek_back() << "\n";
-			cout << "»спользу€ метод pop_back() дл€ данного контейнера, удалим из его конца все элементы, которые были добавлены.\n";
+				<< "\nЁлемент, который будет удален из контейнера, при вызове метода pop_back(): " << deque_cont->peek_back() 
+				<< "\nќтсортируем данный контейнер:\n";
+			deque_cont->selection_sort();
+			cout << *deque_cont << "\n»спользу€ метод pop_back() дл€ данного контейнера, удалим из его конца все элементы, которые были добавлены.\n";
 			for (int j = 0; j < elems_num; j++)
 				cout << deque_cont->pop_back() << " ";
-			cout << "»спользу€ метод pop_front() дл€ данного контейнера, удалим из его начала все элементы, которые были добавлены.\n";
+			cout << "\n»спользу€ метод pop_front() дл€ данного контейнера, удалим из его начала все элементы, которые были добавлены.\n";
 			for (int j = 0; j < elems_num; j++)
 				cout << deque_cont->pop_front() << " ";
 			cout << "\n\n";
@@ -111,6 +115,7 @@ void main() {
 	for (int i = 0, lst_size = l_lst_tmp.get_size(); i < lst_size; i++)
 		l_lst_tmp.pop();
 	cout << "Ќачальный:\n" << l_lst << "\n¬спомогательный:\n" << l_lst_tmp << "\n»х равенство: " << ((l_lst == l_lst_tmp) ? "истинно." : "ложно.") << "\n";
-	delete container_arr[0];
+	for(int i = 0; i < container_num; i++)
+		delete container_arr[i];
 	system("pause");
 }

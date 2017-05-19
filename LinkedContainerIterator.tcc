@@ -15,4 +15,7 @@ T& LinkedContainerIterator<T, LinkedContainer, node>::next() {
 }
 
 template<class T, class LinkedContainer, class node>
-bool LinkedContainerIterator<T, LinkedContainer, node>::has_next() { return it_ptr != NULL ? it_ptr->next : false; }
+bool LinkedContainerIterator<T, LinkedContainer, node>::has_next() { return (it_ptr) ? it_ptr->next : false; }
+
+template<class T, class LinkedContainer, class node>
+void LinkedContainerIterator<T, LinkedContainer, node>::set_value(const T& value) {	it_ptr->value = value; }

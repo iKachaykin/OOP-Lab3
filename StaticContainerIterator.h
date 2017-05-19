@@ -10,6 +10,7 @@ public:
 	StaticContainerIterator(StaticContainer *);
 	T& next();
 	bool has_next();
+	void set_value(const T&);
 	~StaticContainerIterator() {};
 };
 
