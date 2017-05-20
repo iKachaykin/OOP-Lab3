@@ -91,7 +91,7 @@ T LinkedDeque<T>::pop_front() {
 	T tmp_value = head->value;
 	delete head;
 	head = tmp_for_del;
-	if (head && head->value != STATIC_NULL_VALUE)
+	if (head)
 		head->prev = NULL;
 	else
 		tail = NULL;
@@ -107,7 +107,7 @@ T LinkedDeque<T>::pop_back() {
 	T tmp_value = tail->value;
 	delete tail;
 	tail = tmp_for_del;
-	if (tail && tail->value != STATIC_NULL_VALUE)
+	if (tail)
 		tail->next = NULL;
 	else
 		head = NULL;
@@ -130,7 +130,7 @@ T & LinkedDeque<T>::peek_back() {
 template<class T>
 LinkedDeque<T>::~LinkedDeque() {
 	node<T> * tmp;
-	while (head && head->value != STATIC_NULL_VALUE) {
+	for (int i = 0; head && i < get_size(); i++) {
 		tmp = head->next;
 		delete head;
 		head = tmp;

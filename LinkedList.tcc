@@ -28,7 +28,7 @@ LinkedList<T>::LinkedList(const LinkedList<T>& other) {
 template<class T>
 LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& other) {
 	node<T> *tmp;
-	while (head && head->value != STATIC_NULL_VALUE) {
+	while (head) {
 		tmp = head->next;
 		delete head;
 		head = tmp;
@@ -76,7 +76,7 @@ T LinkedList<T>::pop() {
 	T tmp_value = tail->value;
 	delete tail;
 	tail = tmp_for_del;
-	if (tail && tail->value != STATIC_NULL_VALUE)
+	if (tail)
 		tail->next = NULL;
 	else
 		head = NULL;
@@ -146,7 +146,7 @@ void LinkedList<T>::remove_at(int index) {
 	node<T> *tmp_node = head->next;
 	delete head;
 	head = tmp_node;
-	if (head && head->value != STATIC_NULL_VALUE)
+	if (head)
 		head->prev = NULL;
 	else
 		tail = NULL;
@@ -160,7 +160,7 @@ void LinkedList<T>::remove_at(int index) {
 template<class T>
 LinkedList<T>::~LinkedList() {
 	node<T> *tmp;
-	while (head && head->value != STATIC_NULL_VALUE) {
+	for (int i = 0; head && i < get_size(); i++) {
 		tmp = head->next;
 		delete head;
 		head = tmp;

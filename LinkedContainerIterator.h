@@ -1,6 +1,5 @@
 #pragma once
 #include "IteratorInterface.h"
-#include "Node.h"
 
 template<class T, class LinkedContainer, class node>
 class LinkedContainerIterator :

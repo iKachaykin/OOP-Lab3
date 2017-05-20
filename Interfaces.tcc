@@ -16,23 +16,35 @@ string Container<T>::to_string() {
 	return res;
 }
 
-/*
 template<class T>
-void IndexedContainer<T>::selection_sort() {
-	ContainerIterator<T&> *to_ins_iter = this->create_iterator(), *to_min_iter;
-	for (int i = 0, min_index; i < get_size(); i++) {
-		min_index = i;
-		for (int j = i + 1; j < get_size(); j++)
-			if (get(min_index) > get(j))
-				min_index = j;
-		if (min_index != i) {
-			tmp = get(min_index);
-			set(min_index, get(i));
-			set(i, tmp);
+void Container<T>::selection_sort() {
+		int min_value_index = 0;
+		ContainerIterator<T&> *iter = this->create_iterator(), *to_min_iter;
+		T tmp, hyp_min;
+		for (int i = 0; i < get_size(); i++) {
+			iter = this->create_iterator();
+			for (int j = 0; j < i; j++)
+				iter->next();
+			T& to_ins_ref = iter->next();
+			min_value_index = i;
+			for (int j = i + 1; j < get_size(); j++) {
+				to_min_iter = this->create_iterator();
+				for (int min_i = 0; min_i < min_value_index; min_i++)
+					to_min_iter->next();
+				hyp_min = to_min_iter->next();
+				tmp = iter->next();
+				if (hyp_min > tmp)
+					min_value_index = j;
+			}
+			to_min_iter = this->create_iterator();
+			for (int min_i = 0; min_i < min_value_index; min_i++)
+				to_min_iter->next();
+			T& min_value_ref = to_min_iter->next();
+			if (min_value_ref != to_ins_ref)
+				swap(min_value_ref, to_ins_ref);
 		}
-	}
 }
-*/
+
 
 template <class T>
 bool Container<T>::operator==(Container<T> const& other) const {

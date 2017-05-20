@@ -1,5 +1,4 @@
 #pragma once
-#define STATIC_NULL_VALUE -572662307
 #include <iostream>
 #include "Node.h"
 #include "IteratorInterface.h"
@@ -21,33 +20,7 @@ public:
 	virtual int get_size() const = 0;
 	virtual bool is_empty() const;
 	virtual string to_string();
-	void selection_sort() {
-		int min_value_index = 0;
-		ContainerIterator<T&> *iter = this->create_iterator(), *to_min_iter;
-		T tmp, hyp_min;
-		for (int i = 0; i < get_size(); i++) {
-			iter = this->create_iterator();
-			for (int j = 0; j < i; j++)
-				iter->next();
-			T& to_ins_ref = iter->next();
-			min_value_index = i;
-			for (int j = i + 1; j < get_size(); j++) {
-				to_min_iter = this->create_iterator();
-				for (int min_i = 0; min_i < min_value_index; min_i++)
-					to_min_iter->next();
-				hyp_min = to_min_iter->next();
-				tmp = iter->next();
-				if (hyp_min > tmp)
-					min_value_index = j;
-			}
-			to_min_iter = this->create_iterator();
-			for (int min_i = 0; min_i < min_value_index; min_i++)
-				to_min_iter->next();
-			T& min_value_ref = to_min_iter->next();
-			if (min_value_ref != to_ins_ref)
-				swap(min_value_ref, to_ins_ref);
-		}
-	}
+	void selection_sort();
 	virtual ~Container() {}
 };
 

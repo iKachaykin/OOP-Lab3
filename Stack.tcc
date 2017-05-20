@@ -76,7 +76,7 @@ T Stack<T>::pop() {
 	T tmp_value = head->value;
 	delete head;
 	head = tmp_for_del;
-	if (head && head->value != STATIC_NULL_VALUE)
+	if (head)
 		head->prev = NULL;
 	else
 		tail = 0;
@@ -93,7 +93,7 @@ T & Stack<T>::peek() {
 template<class T>
 Stack<T>::~Stack() {
 	node<T> * tmp;
-	while (head && head->value != STATIC_NULL_VALUE) {
+	for (int i = 0; head && i < get_size(); i++) {
 		tmp = head->next;
 		delete head;
 		head = tmp;
