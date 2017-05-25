@@ -9,6 +9,7 @@ private:
 	node<T> *head, *tail;
 	int size;
 public:
+	typedef ContainerIterator<T&> iterator;
 	friend LinkedContainerIterator<T, LinkedList<T>, node<T>>;
 	friend LinkedContainerIterator<T const, const LinkedList<T>, const node<T>>;
 	LinkedList();

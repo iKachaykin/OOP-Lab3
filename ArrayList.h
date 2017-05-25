@@ -9,6 +9,7 @@ private:
 	int size;
 	T *arr;
 public:
+	typedef ContainerIterator<T&> iterator;
 	friend StaticContainerIterator<T, ArrayList<T>>;
 	friend StaticContainerIterator<T const, const ArrayList<T>>;
 	ArrayList(const T& default_value);

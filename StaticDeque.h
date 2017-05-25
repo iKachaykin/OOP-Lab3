@@ -8,6 +8,7 @@ private:
 	T *arr;
 	int size;
 public:
+	typedef ContainerIterator<T&> iterator;
 	friend StaticContainerIterator<T, StaticDeque<T>>;
 	friend StaticContainerIterator<const T, const StaticDeque<T>>;
 	StaticDeque(const StaticDeque<T>&);

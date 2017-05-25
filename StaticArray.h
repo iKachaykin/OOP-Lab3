@@ -8,6 +8,7 @@ private:
 	T *arr;
 	int size;
 public:
+	typedef ContainerIterator<T&> iterator;
 	friend StaticContainerIterator<T, StaticArray<T>>;
 	friend StaticContainerIterator<const T, const StaticArray<T>>;
 	StaticArray(int size, const T& default_value);
